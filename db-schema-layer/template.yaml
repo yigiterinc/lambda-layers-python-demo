@@ -1,0 +1,21 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Shared sql-alchemy models, libraries and code
+
+Resources:
+  DBSchemaLambdaLayer:
+      Type: AWS::Serverless::LayerVersion
+      Properties:
+          LayerName: DBSchemaLambdaLayer
+          Description: Shared SQLAlchemy models, libraries and code
+          ContentUri: src/
+          CompatibleRuntimes:
+            - python3.9
+          RetentionPolicy: Retain
+
+Outputs:
+  DBSchemaLambdaLayer:
+    Description: SQLAlchemy models and utilities
+    Value: !Ref DBSchemaLambdaLayer
+    Export:
+      Name: !Sub '${AWS::StackName}-DBSchemaLambdaLayerExample'

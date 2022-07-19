@@ -1,11 +1,11 @@
 import json
 import os
-from db_commons.model import Person
-from shared_utils.a import func1
+from commons.utils import func1
+from db_commons.model import person
 
 def lambda_handler(event, context):
 
-    print(os.listdir("/opt/python/db-schema"))
+    print(os.listdir("/opt/python/db_commons"))
     func1()
 
     return {
